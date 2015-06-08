@@ -1,0 +1,23 @@
+{
+  "name": "gear-ratio-calculator",
+  "version": "0.0.1",
+  "description": "A bicycle gear ratio calculator written in React.",
+  "repository": "https://github.com/jakegavin/gear-ratio-calculator",
+  "main": "js/app.js",
+  "dependencies": {
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.4"
+  },
+  "scripts": {
+    "build": "browserify js/app.js > js/bundle.js"
+  },
+  "author": "Jake Gavin <jakegavin@gmail.com>",
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  }
+}
