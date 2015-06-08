@@ -5,7 +5,8 @@
   "repository": "https://github.com/jakegavin/gear-ratio-calculator",
   "main": "js/app.js",
   "dependencies": {
-    "react": "^0.13.3"
+    "react": "^0.13.3",
+    "alt": "^0.16.10"
   },
   "devDependencies": {
     "babelify": "^6.1.2",

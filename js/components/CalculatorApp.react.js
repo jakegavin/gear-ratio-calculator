@@ -1,4 +1,5 @@
-var React = require('react')
+var React = require('react');
+var GearStore = require('../stores/GearStore');
 
 var CalculatorApp = React.createClass({
   render: function() {
@@ -6,8 +7,8 @@ var CalculatorApp = React.createClass({
       <div>
         <h1>Calculator</h1>
       </div>
-    )
+    );
   }
 });
 
-module.exports = CalculatorApp
+module.exports = CalculatorApp;
