@@ -1,11 +1,9 @@
-var alt = require('../alt')
+var alt = require('../alt');
 
 class GearActions {
-  constructor() {
-    this.generateActions(
-
-    )
+  createGear(value) {
+    this.dispatch(value);
   }
 }
 
-module.exports = alt.createActions(GearActions)
+module.exports = alt.createActions(GearActions);
