@@ -23,19 +23,30 @@ var CalculatorApp = React.createClass({
     return (
       <div>
         <h1>Calculator</h1>
+        Chainring:
         <GearTextInput
+          gearType='chainring'
           onSave={this.handleGearCreated}
         />
         <GearList
-          gears={this.state.gears}
+          gears={GearStore.getAllForType('chainring')}
+        />
+
+        Sprockets:
+        <GearTextInput
+          gearType='sprocket'
+          onSave={this.handleGearCreated}
+        />
+        <GearList
+          gears={GearStore.getAllForType('sprocket')}
         />
       </div>
     );
   },
 
-  handleGearCreated: function(value) {
-    if (value.trim()) {
-      GearActions.createGear(value);
+  handleGearCreated: function(gearHash) {
+    if (gearHash.value.trim()) {
+      GearActions.createGear(gearHash);
     }
   },
 

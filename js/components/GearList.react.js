@@ -2,27 +2,21 @@ var React = require('react');
 
 var GearList = React.createClass({
   propTypes: {
-    gears: React.PropTypes.object.isRequired
+    gears: React.PropTypes.array.isRequired
   },
 
   render: function() {
-    var allGears = this.props.gears;
-    var gears = [];
-
-    if (Object.keys(this.props.gears).length < 1) {
+    if (this.props.gears.length < 1) {
       return null;
     }
 
-    for (var key in this.props.gears) {
-      gears.push(<li key={key}>{allGears[key].value}</li>);
-    }
+    var gearElements = this.props.gears.map(function(gear) {
+      return (
+        <li key={gear.id}>{gear.gearType}: {gear.value}</li>
+      );
+    });
 
-    return (
-      <div>
-        <h3>Gears</h3>
-        <ul>{gears}</ul>
-      </div>
-    );
+    return <ul>{gearElements}</ul>;
   }
 });
 
