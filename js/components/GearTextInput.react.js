@@ -1,4 +1,5 @@
 var React = require('react');
+var GearActions = require('../actions/GearActions');
 
 var ENTER_KEY_CODE = 13;
 
@@ -6,7 +7,14 @@ var GearTextInput = React.createClass({
   propTypes: {
     gearType: React.PropTypes.string.isRequired,
     onSave: React.PropTypes.func.isRequired,
+    placeholder: React.PropTypes.string,
     value: React.PropTypes.string
+  },
+
+  getDefaultProps: function() {
+    return {
+      placeholder: ''
+    };
   },
 
   getInitialState: function() {
@@ -22,6 +30,7 @@ var GearTextInput = React.createClass({
           onBlur={this.handleSave}
           onKeyDown={this.handleKeyDown}
           onChange={this.handleTextChanged}
+          placeholder={this.props.placeholder}
           value={this.state.value}
         />
       </div>
@@ -35,10 +44,13 @@ var GearTextInput = React.createClass({
   },
 
   handleSave: function() {
-    this.props.onSave({
-      gearType: this.props.gearType,
-      value: this.state.value
-    });
+    if (this.state.value.trim()) {
+      GearActions.createGear({
+        gearType: this.props.gearType,
+        value: this.state.value
+      });
+    }
+
     this.setState({
       value: ''
     });

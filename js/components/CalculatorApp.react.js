@@ -1,8 +1,8 @@
 var React = require('react');
 var GearActions = require('../actions/GearActions');
-var GearList = require('./GearList.react');
 var GearStore = require('../stores/GearStore');
 var GearTextInput = require('./GearTextInput.react');
+var GearTable = require('./GearTable.react');
 
 var CalculatorApp = React.createClass({
   getInitialState: function() {
@@ -23,31 +23,12 @@ var CalculatorApp = React.createClass({
     return (
       <div>
         <h1>Calculator</h1>
-        Chainring:
-        <GearTextInput
-          gearType='chainring'
-          onSave={this.handleGearCreated}
-        />
-        <GearList
-          gears={GearStore.getAllForType('chainring')}
-        />
-
-        Sprockets:
-        <GearTextInput
-          gearType='sprocket'
-          onSave={this.handleGearCreated}
-        />
-        <GearList
-          gears={GearStore.getAllForType('sprocket')}
+        <GearTable
+          chainrings={GearStore.getAllForType('chainring')}
+          sprockets={GearStore.getAllForType('sprocket')}
         />
       </div>
     );
-  },
-
-  handleGearCreated: function(gearHash) {
-    if (gearHash.value.trim()) {
-      GearActions.createGear(gearHash);
-    }
   },
 
   handleGearStoreChanged: function(state) {
