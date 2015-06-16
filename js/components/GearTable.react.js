@@ -4,7 +4,7 @@ var GearTextInput = require('./GearTextInput.react');
 var GearTable = React.createClass({
   propTypes: {
     chainrings: React.PropTypes.array.isRequired,
-    sprockets: React.PropTypes.array.isRequired
+    cogs: React.PropTypes.array.isRequired
   },
 
   render: function() {
@@ -25,12 +25,12 @@ var GearTable = React.createClass({
               />
             </td>
           </tr>
-          {this.renderSprocketRows()}
+          {this.renderCogRows()}
           <tr>
             <td>
               <GearTextInput
-                gearType='sprocket'
-                placeholder='Sprocket'
+                gearType='cog'
+                placeholder='Cog'
               />
             </td>
           </tr>
@@ -39,29 +39,29 @@ var GearTable = React.createClass({
     );
   },
 
-  renderGearRatioColumns: function(sprocket) {
+  renderGearRatioColumns: function(cog) {
     var valueColumns = this.props.chainrings.map(function(chainring) {
-      return <td key={sprocket.id + chainring.id}>{this._calculateRatio(chainring.value, sprocket.value)}</td>;
+      return <td key={cog.id + chainring.id}>{this._calculateRatio(chainring.value, cog.value)}</td>;
     }, this);
 
     return valueColumns;
   },
 
-  renderSprocketRows: function() {
-    var sprocketRows = this.props.sprockets.map(function(sprocket, index) {
+  renderCogRows: function() {
+    var cogRows = this.props.cogs.map(function(cog, index) {
       return (
-        <tr key={sprocket.id}>
-          <td>{sprocket.value}</td>
-          {this.renderGearRatioColumns(sprocket)}
+        <tr key={cog.id}>
+          <td>{cog.value}</td>
+          {this.renderGearRatioColumns(cog)}
         </tr>
       );
     }, this);
 
-    return sprocketRows;
+    return cogRows;
   },
 
-  _calculateRatio: function(chainringValue, sprocketValue) {
-    var ratio = chainringValue / sprocketValue;
+  _calculateRatio: function(chainringValue, cogValue) {
+    var ratio = chainringValue / cogValue;
     return Math.round(ratio * 100) / 100;
   }
 });

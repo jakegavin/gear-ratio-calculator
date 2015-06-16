@@ -25,7 +25,7 @@ var CalculatorApp = React.createClass({
         <h1>Calculator</h1>
         <GearTable
           chainrings={GearStore.getAllForType('chainring')}
-          sprockets={GearStore.getAllForType('sprocket')}
+          cogs={GearStore.getAllForType('cog')}
         />
       </div>
     );
