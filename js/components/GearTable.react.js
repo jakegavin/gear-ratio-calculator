@@ -1,5 +1,6 @@
 var React = require('react');
 var GearTextInput = require('./GearTextInput.react');
+var SprocketCell = require('./SprocketCell.react');
 
 var GearTable = React.createClass({
   propTypes: {
@@ -9,7 +10,7 @@ var GearTable = React.createClass({
 
   render: function() {
     var chainringRow = this.props.chainrings.map(function(chainring) {
-      return <td key={chainring.id}>{chainring.value}</td>;
+      return <SprocketCell key={chainring.id} sprocket={chainring} />;
     });
 
     return (
@@ -39,20 +40,20 @@ var GearTable = React.createClass({
     );
   },
 
-  renderGearRatioColumns: function(cog) {
-    var valueColumns = this.props.chainrings.map(function(chainring) {
+  renderGearRatioCells: function(cog) {
+    var ratioCells = this.props.chainrings.map(function(chainring) {
       return <td key={cog.id + chainring.id}>{this._calculateRatio(chainring.value, cog.value)}</td>;
     }, this);
 
-    return valueColumns;
+    return ratioCells;
   },
 
   renderCogRows: function() {
     var cogRows = this.props.cogs.map(function(cog, index) {
       return (
         <tr key={cog.id}>
-          <td>{cog.value}</td>
-          {this.renderGearRatioColumns(cog)}
+          <SprocketCell sprocket={cog} />
+          {this.renderGearRatioCells(cog)}
         </tr>
       );
     }, this);

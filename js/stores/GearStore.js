@@ -6,7 +6,8 @@ class GearStore {
     this.gears = {};
 
     this.bindListeners({
-      handleCreateGear: GearActions.CREATE_GEAR
+      handleCreateGear: GearActions.CREATE_GEAR,
+      handleDestroy: GearActions.DESTROY
     });
   }
 
@@ -22,6 +23,10 @@ class GearStore {
       gearType: gearHash.gearType,
       value: value
     };
+  }
+
+  handleDestroy(id) {
+    delete this.gears[id];
   }
 
   static getAllForType(specifiedType) {

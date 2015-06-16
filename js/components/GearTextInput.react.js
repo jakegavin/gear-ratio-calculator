@@ -6,7 +6,6 @@ var ENTER_KEY_CODE = 13;
 var GearTextInput = React.createClass({
   propTypes: {
     gearType: React.PropTypes.string.isRequired,
-    onSave: React.PropTypes.func.isRequired,
     placeholder: React.PropTypes.string,
     value: React.PropTypes.string
   },
