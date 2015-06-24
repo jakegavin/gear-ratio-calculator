@@ -1,4 +1,5 @@
 var React = require('react');
+var GearActions = require('../actions/GearActions');
 var GearTextInput = require('./GearTextInput.react');
 var SprocketCell = require('./SprocketCell.react');
 
@@ -23,6 +24,7 @@ var GearTable = React.createClass({
               <GearTextInput
                 gearType='chainring'
                 placeholder='Chainring'
+                onSave={this.handleGearCreated}
               />
             </td>
           </tr>
@@ -32,6 +34,7 @@ var GearTable = React.createClass({
               <GearTextInput
                 gearType='cog'
                 placeholder='Cog'
+                onSave={this.handleGearCreated}
               />
             </td>
           </tr>
@@ -59,6 +62,10 @@ var GearTable = React.createClass({
     }, this);
 
     return cogRows;
+  },
+
+  handleGearCreated: function(gearHash) {
+    GearActions.createGear(gearHash);
   },
 
   _calculateRatio: function(chainringValue, cogValue) {

@@ -1,7 +1,6 @@
 var React = require('react');
 var GearActions = require('../actions/GearActions');
 var GearStore = require('../stores/GearStore');
-var GearTextInput = require('./GearTextInput.react');
 var GearTable = require('./GearTable.react');
 
 var CalculatorApp = React.createClass({

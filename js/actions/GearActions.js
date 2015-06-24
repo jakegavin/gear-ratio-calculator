@@ -8,6 +8,11 @@ class GearActions {
   destroy(id) {
     this.dispatch(id);
   }
+
+  updateValue(updatedHash) {
+    this.dispatch(updatedHash);
+  }
+
 }
 
 module.exports = alt.createActions(GearActions);

@@ -1,4 +1,5 @@
 var alt = require('../alt');
+var merge = require('object-assign');
 var GearActions = require('../actions/GearActions');
 
 class GearStore {
@@ -7,7 +8,8 @@ class GearStore {
 
     this.bindListeners({
       handleCreateGear: GearActions.CREATE_GEAR,
-      handleDestroy: GearActions.DESTROY
+      handleDestroy: GearActions.DESTROY,
+      handleUpdateValue: GearActions.UPDATE_VALUE
     });
   }
 
@@ -27,6 +29,20 @@ class GearStore {
 
   handleDestroy(id) {
     delete this.gears[id];
+  }
+
+  handleUpdateValue(updatedHash) {
+    var { id, value } = updatedHash;
+
+    value = value ? value.trim() : '';
+    if (value === '') {
+      delete this.gears[id];
+      return false;
+    }
+
+    if (this.gears[id] && value) {
+      this.gears[id] = merge(this.gears[id], { value });
+    }
   }
 
   static getAllForType(specifiedType) {
