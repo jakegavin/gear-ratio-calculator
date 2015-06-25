@@ -1,6 +1,10 @@
 var alt = require('../alt');
 
 class GearActions {
+  addCassette(valueArray) {
+    this.dispatch(valueArray);
+  }
+
   createGear(value) {
     this.dispatch(value);
   }

@@ -19,6 +19,7 @@ open index.html
 
 ## Definitions
 Within the context of this app:
+- cassette: A collection of cogs attached to the hub on the rear wheel
 - cog: Individual gears that makeup the rear cassette
 - chainring: Individual gears that makeup the front chainrings
 - sprockets: Any individual gear in the system

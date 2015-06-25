@@ -7,10 +7,20 @@ class GearStore {
     this.gears = {};
 
     this.bindListeners({
+      handleAddCassette: GearActions.ADD_CASSETTE,
       handleCreateGear: GearActions.CREATE_GEAR,
       handleDestroy: GearActions.DESTROY,
       handleUpdateValue: GearActions.UPDATE_VALUE
     });
+  }
+
+  handleAddCassette(valueArray) {
+    valueArray.forEach(function(cassetteValue) {
+      this.handleCreateGear({
+        gearType: 'cog',
+        value: cassetteValue
+      });
+    }, this);
   }
 
   handleCreateGear(gearHash) {

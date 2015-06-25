@@ -1,4 +1,5 @@
 var React = require('react');
+var CassetteSelector = require('./CassetteSelector.react');
 var GearActions = require('../actions/GearActions');
 var GearStore = require('../stores/GearStore');
 var GearTable = require('./GearTable.react');
@@ -26,6 +27,7 @@ var CalculatorApp = React.createClass({
           chainrings={GearStore.getAllForType('chainring')}
           cogs={GearStore.getAllForType('cog')}
         />
+        <CassetteSelector />
       </div>
     );
   },
