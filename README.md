@@ -7,7 +7,20 @@ Install the dependencies with:
 npm install
 ```
 
-Then run a build with:
+To run a development server, use: 
+```
+npm run watch
+```
+
+The app will run at:
+```
+http://127.0.0.1:9966/
+```
+
+Beefy will automatically refresh that page if a project file changes.
+
+
+Alternatively, you can run a build with:
 ```
 npm run build
 ```
